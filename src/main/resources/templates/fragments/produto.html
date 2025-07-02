@@ -1,0 +1,27 @@
+<div class="container" th:fragment="produto-card">
+        <div th:each="pedido : ${pedidos}" class="card">
+            <div th:text="${pedido.nome}" class="card-header">Nome do produto</div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-sm-8 mb-3">
+                        <div class="row">
+                            <div class="col-md-5">Valor: <span th:text="${pedido.valor}">?</span></div>
+                            <div class="col-md-7">Data da entrega: <span th:text="${pedido.dataEntrega}">##</span></div>
+                        </div>
+
+                        <div>Produto</div>
+                        <div>url <input type="text" th:value="${pedido.urlProduto}" class="form-control"></div>
+                        <div>descrição</div>
+                        <div><textarea placeholder="Sobre o produto" th:text="${pedido.descricao}"
+                                class="form-control"></textarea></div>
+                    </div>
+                    <div class="col-12 col-sm-4">
+                        <div>
+                            <img th:src="${pedido.urlImagem}" alt="" class="img-thumbnail">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
