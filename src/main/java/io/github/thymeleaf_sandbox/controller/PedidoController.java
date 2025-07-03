@@ -31,7 +31,7 @@ public class PedidoController {
 private PedidoService pedidoService;
 
     @GetMapping
-    public ModelAndView pedido(ModelAndView mv) {
+    public ModelAndView pedido(PedidoDTOCreate dto,ModelAndView mv) {
         return pedidoService.getPedido(mv);
     }
     
