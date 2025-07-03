@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
 import io.github.thymeleaf_sandbox.service.PedidoService;
 
 @Controller
@@ -19,7 +20,7 @@ public class HomeController {
     private PedidoService pedidoService;
 
     @GetMapping
-    public ModelAndView getHome(ModelAndView mv) {
+    public ModelAndView home(ModelAndView mv) {
         return pedidoService.getHome(mv);
     }
 

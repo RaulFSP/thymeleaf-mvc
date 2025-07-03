@@ -13,6 +13,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -38,4 +39,11 @@ public class Pedido {
     private String urlImagem;
     @Column(length=600)
     private String descricao;
+
+    public Pedido(@Valid PedidoDTOCreate dto){
+        this.nome=dto.nome();
+        this.urlProduto=dto.urlProduto();
+        this.urlImagem=dto.urlImagem();
+        this.descricao=dto.descricao();
+    }
 }

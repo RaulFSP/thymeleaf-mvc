@@ -1,5 +1,5 @@
 <div class="container" th:fragment="produto-card">
-        <div th:each="pedido : ${pedidos}" class="card">
+        <div th:each="pedido : ${pedidos}" class="card mb-3">
             <div th:text="${pedido.nome}" class="card-header">Nome do produto</div>
             <div class="card-body">
                 <div class="row">
@@ -10,9 +10,9 @@
                         </div>
 
                         <div>Produto</div>
-                        <div>url <input type="text" th:value="${pedido.urlProduto}" class="form-control"></div>
+                        <div>url <input type="text" th:value="${pedido.urlProduto}" class="form-control" readonly></div>
                         <div>descrição</div>
-                        <div><textarea placeholder="Sobre o produto" th:text="${pedido.descricao}"
+                        <div><textarea placeholder="Sobre o produto" th:text="${pedido.descricao}" readonly rows="12" style="resize: none;"
                                 class="form-control"></textarea></div>
                     </div>
                     <div class="col-12 col-sm-4">

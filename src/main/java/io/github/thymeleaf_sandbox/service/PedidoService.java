@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
+import io.github.thymeleaf_sandbox.model.Pedido;
+import io.github.thymeleaf_sandbox.model.PedidoDTOCreate;
 import io.github.thymeleaf_sandbox.model.PedidoDTORead;
 import io.github.thymeleaf_sandbox.repository.PedidoRepository;
 
@@ -29,5 +31,16 @@ public class PedidoService {
         mv.addObject("pedidos", pedidos);
         mv.setViewName("home");
         return mv;
+    }
+
+    public ModelAndView getPedido(ModelAndView mv){
+        mv.setViewName("pedido");
+        return mv;
+    }
+
+    public void novoPedido(PedidoDTOCreate dto){
+        
+        pedidoRepository.save(new Pedido(dto));
+        
     }
 }
