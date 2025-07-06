@@ -18,10 +18,11 @@ public record PedidoDTORead(
         LocalDate dataEntrega,
         String urlProduto,
         String urlImagem,
-        String descricao
+        String descricao,
+        StatusPedido statusPedido
         ) {
 
             public PedidoDTORead(Pedido pedido){
-                this(pedido.getId(),pedido.getNome(),pedido.getValor(),pedido.getDataEntrega(),pedido.getUrlProduto(),pedido.getUrlImagem(),pedido.getDescricao());
+                this(pedido.getId(),pedido.getNome(),pedido.getValor(),pedido.getDataEntrega(),pedido.getUrlProduto(),pedido.getUrlImagem(),pedido.getDescricao(),pedido.getStatusPedido());
             }
 }

@@ -1,15 +1,20 @@
 <div class="container" th:fragment="produto-card">
         <div th:each="pedido : ${pedidos}" class="card mb-3">
-            <div th:text="${pedido.nome}" class="card-header">Nome do produto</div>
+            <th:block th:switch="${pedido.statusPedido.name()}">
+                <div th:case="'AGUARDANDO'" th:text="${pedido.nome}" class="card-header alert-warning">Nome do produto</div>
+                <div th:case="'APROVADO'" th:text="${pedido.nome}" class="card-header alert-primary">Nome do produto</div>
+                <div th:case="'ENTREGUE'" th:text="${pedido.nome}" class="card-header alert-success">Nome do produto</div>
+            </th:block>
             <div class="card-body">
                 <div class="row">
                     <div class="col-12 col-sm-8 mb-3">
                         <div class="row">
-                            <div class="col-md-5">Valor: <span th:text="${pedido.valor}">?</span></div>
-                            <div class="col-md-7">Data da entrega: <span th:text="${pedido.dataEntrega}">##</span></div>
+                            <div class="col-md-5">Valor: <span th:if="${pedido.valor} != null" th:text="|R$ ${#numbers.formatDecimal(pedido.valor,3,'POINT',2,'COMMA')}|" >?</span></div>
+                            <div class="col-md-7">Data da entrega: <span th:text="${#dates.format(pedido.dataEntrega,'dd/MM/yyyy')}">##</span></div>
+                            
                         </div>
 
-                        <div>Produto</div>
+                        
                         <div>url <input type="text" th:value="${pedido.urlProduto}" class="form-control" readonly></div>
                         <div>descrição</div>
                         <div><textarea placeholder="Sobre o produto" th:text="${pedido.descricao}" readonly rows="12" style="resize: none;"
@@ -20,7 +25,6 @@
                             <img th:src="${pedido.urlImagem}" alt="" class="img-thumbnail">
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 package io.github.thymeleaf_sandbox.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,31 +17,25 @@ import io.github.thymeleaf_sandbox.model.PedidoDTOCreate;
 import io.github.thymeleaf_sandbox.service.PedidoService;
 import jakarta.validation.Valid;
 
-
-
 /**
  *
  * @author laptop
  */
 @Controller
-@RequestMapping(value="/pedido")
+@RequestMapping(value = "/pedido")
 public class PedidoController {
 
-@Autowired
-private PedidoService pedidoService;
+    @Autowired
+    private PedidoService pedidoService;
 
     @GetMapping
-    public ModelAndView pedido(PedidoDTOCreate dto,ModelAndView mv) {
-        return pedidoService.getPedido(mv);
+    public ModelAndView pedido(PedidoDTOCreate dto, ModelAndView mv,Pageable pageable) {
+        return pedidoService.getPedido(mv, pageable);
     }
-    
+
     @PostMapping("/novo")
     public String pedidoNovo(@Valid PedidoDTOCreate dto, BindingResult result) {
-        if(result.hasErrors()){
-            return "pedido";
-        }
-        pedidoService.novoPedido(dto);
-        return "redirect:/pedido";
+        return pedidoService.novoPedido(dto, result);
     }
-    
+
 }

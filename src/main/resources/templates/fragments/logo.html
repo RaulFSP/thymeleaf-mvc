@@ -1,0 +1,8 @@
+<div  th:fragment="logo" class="logo-container p-4 d-flex justify-content-between">
+    <span class="logo"> mudi</span>
+    <a th:if="${session.isEmpty()}" th:href="@{/login}" class="text-light">Login</a>
+    
+    <form th:action="@{/logout}" method="post" th:if="${!session.isEmpty()}">
+        <input type="submit" value="logout">
+    </form>
+</div>

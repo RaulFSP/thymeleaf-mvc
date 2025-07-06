@@ -5,21 +5,23 @@
 package io.github.thymeleaf_sandbox.model;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
 
 /**
  *
  * @author Administrator
  */
 public record PedidoDTOCreate(
-        @NotEmpty
+        @NotBlank(message = "{NotBlank.pedidoDTOCreate.nome}")
         String nome,
-        @NotBlank
+        @NotBlank(message = "{NotBlank.pedidoDTOCreate.urlProduto}")
         String urlProduto,
-        @NotBlank
+        @NotBlank(message = "{NotBlank.pedidoDTOCreate.urlImagem}")
         String urlImagem,
-        @NotBlank
+        @NotBlank(message = "{NotBlank.pedidoDTOCreate.descricao}")
         String descricao
+        
         ) {
+
+	
 
 }

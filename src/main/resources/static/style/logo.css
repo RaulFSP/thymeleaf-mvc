@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
+
+.logo-container {
+			background-color: #47bcff;
+			color:#FFF;
+		}
+		
+		.logo {
+			font-family: 'Handlee', cursive;
+			font-size: 2.5rem;
+		}

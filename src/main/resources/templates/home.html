@@ -4,9 +4,14 @@
 <div th:replace="~{fragments/head(title='Home')}"></div>
 
 <body>
+    <div th:replace="~{fragments/logo::logo}"></div>
     <div th:replace="~{fragments/jumbotron::jumbo(h1Titulo='Meus Pedidos')}"></div>
     <div th:replace="~{fragments/navbar::navbar}"></div>
+    <div th:replace="~{fragments/navbar/pageable-navbar::pageable}"></div> 
+     
+
     <div th:replace="~{fragments/produto::produto-card}"></div>
 </body>
 
 </html>
+

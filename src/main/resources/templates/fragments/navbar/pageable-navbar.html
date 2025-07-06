@@ -1,0 +1,35 @@
+<div class="container" th:fragment="pageable"> 
+    <nav>
+        <ul class="pagination">
+
+            <li class="page-item" th:classappend="${pedidos.first} ? 'disabled'">
+                <a class="page-link"
+                   th:href="@{${currentUrl}(page=0, size=${pedidos.size})}">First</a>
+            </li>
+
+            <li class="page-item" th:classappend="${pedidos.first} ? 'disabled'">
+                <a class="page-link"
+                   th:href="@{${currentUrl}(page=${pedidos.number - 1}, size=${pedidos.size})}">Previous</a>
+            </li>
+
+            <li class="page-item"
+                th:each="i : ${#numbers.sequence(0, pedidos.totalPages - 1)}"
+                th:classappend="${pedidos.number == i} ? 'active'">
+                <a class="page-link"
+                   th:href="@{${currentUrl}(page=${i}, size=${pedidos.size})}"
+                   th:text="${i + 1}"></a>
+            </li>
+
+            <li class="page-item" th:classappend="${pedidos.last} ? 'disabled'">
+                <a class="page-link"
+                   th:href="@{${currentUrl}(page=${pedidos.number + 1}, size=${pedidos.size})}">Next</a>
+            </li>
+
+            <li class="page-item" th:classappend="${pedidos.last} ? 'disabled'">
+                <a class="page-link"
+                   th:href="@{${currentUrl}(page=${pedidos.totalPages - 1}, size=${pedidos.size})}">Last</a>
+            </li>
+
+        </ul>
+    </nav>
+</div>

@@ -1,33 +1,37 @@
 <div class="container" th:fragment="form-create">
 
     
-    <form th:action="@{/pedido/novo}" method="post" th:object="${pedidoDTOCreate}">
-        <div class="mb-3">
+    <form th:action="@{/pedido/novo}" method="post" th:object="${pedidoDTOCreate}" >
+        <div class="mb-3 ">
             <label class="form-label" for="nome">Nome</label>
-            <input type="text" class="form-control" id="nome" name="nome" th:field="*{nome}">
+            <input type="text" class="form-control" id="nome" name="nome" th:field="*{nome}" th:errorclass="is-invalid">
             <small class="form-text">Informe o nome completo do produto</small>
+            <div class="invalid-feedback" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></div>
         </div>
 
 
         <div class="mb-3">
             <label class="form-label" for="urlProduto">Link do Produto</label>
-            <input type="text" class="form-control" id="urlProduto" name="urlProduto" th:field="*{urlProduto}">
+            <input type="text" class="form-control" id="urlProduto" name="urlProduto" th:field="*{urlProduto}" th:errorclass="is-invalid">
             <small class="form-text">Coloque o link do site onde encontrou o produto</small>
+            <div class="invalid-feedback" th:if="${#fields.hasErrors('urlProduto')}" th:errors="*{urlProduto}"></div>
         </div>
 
         <div class="mb-3">
             <label class="form-label" for="urlImagem">Link da Imagem Produto</label>
-            <input type="text" class="form-control" id="urlImagem" name="urlImagem" th:field="*{urlImagem}">  
+            <input type="text" class="form-control" id="urlImagem" name="urlImagem" th:field="*{urlImagem}" th:errorclass="is-invalid">  
             <small class="form-text">Coloque o link de uma imagem que represente o produto</small>
+            <div class="invalid-feedback" th:if="${#fields.hasErrors('urlImagem')}" th:errors="*{urlImagem}"></div>
         </div>
 
         <div class="mb-3">
             <label class="form-label" for="descricao">Descrição do Produto</label>
-            <textarea class="form-control" id="descricao" name="descricao" rows="4" th:field="*{descricao}"></textarea>
+            <div class="invalid-feedback" th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}"></div>
+            <textarea class="form-control" id="descricao" name="descricao" rows="4" th:field="*{descricao}" th:errorclass="is-invalid"></textarea>
         </div>
         <div class="d-flex flex-column flex-md-row gap-4 mb-3">
             <button type="submit" class="btn btn-primary flex-fill">Adicionar</button>
-            <button type="reset" class="btn btn-warning flex-fill">limpar</button>
+            <a type="button" class="btn btn-warning flex-fill" th:href="@{/pedido}">limpar</a>
         </div>
     </form>
 </div>
