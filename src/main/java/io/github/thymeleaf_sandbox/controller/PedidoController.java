@@ -5,7 +5,6 @@
 package io.github.thymeleaf_sandbox.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,8 +28,8 @@ public class PedidoController {
     private PedidoService pedidoService;
 
     @GetMapping
-    public ModelAndView pedido(PedidoDTOCreate dto, ModelAndView mv,Pageable pageable) {
-        return pedidoService.getPedido(mv, pageable);
+    public ModelAndView pedido(PedidoDTOCreate dto, ModelAndView mv) {
+        return pedidoService.getPedido(mv);
     }
 
     @PostMapping("/novo")

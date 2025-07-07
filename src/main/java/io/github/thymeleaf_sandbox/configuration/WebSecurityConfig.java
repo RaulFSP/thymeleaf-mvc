@@ -16,7 +16,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
-import io.github.thymeleaf_sandbox.authentication.CustomUserDetailsService;
+import io.github.thymeleaf_sandbox.authentication.AppUserDetailsService;
 
 /**
  *
@@ -27,13 +27,14 @@ import io.github.thymeleaf_sandbox.authentication.CustomUserDetailsService;
 public class WebSecurityConfig {
 
     @Autowired
-    private CustomUserDetailsService customUserDetailsService;
+    private AppUserDetailsService customUserDetailsService;
 
     @Bean
     public SecurityFilterChain sfc(HttpSecurity http) throws Exception {
         return http
                 .authorizeHttpRequests((req) -> req
                 .requestMatchers("/favicon.ico").permitAll()
+                .requestMatchers("/cadastro").permitAll()
                 .requestMatchers("/style/**").permitAll()
                 .anyRequest().authenticated())
                 .formLogin((fl) -> fl.loginPage("/login").permitAll())

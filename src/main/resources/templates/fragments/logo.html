@@ -3,6 +3,6 @@
     <a th:if="${session.isEmpty()}" th:href="@{/login}" class="text-light">Login</a>
     
     <form th:action="@{/logout}" method="post" th:if="${!session.isEmpty()}">
-        <input type="submit" value="logout">
+        <button class="btn btn-warning" type="submit" >logout</button>
     </form>
 </div>

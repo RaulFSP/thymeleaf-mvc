@@ -7,6 +7,8 @@ package io.github.thymeleaf_sandbox.model;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import io.github.thymeleaf_sandbox.model.enums.StatusPedido;
+
 /**
  *
  * @author laptop

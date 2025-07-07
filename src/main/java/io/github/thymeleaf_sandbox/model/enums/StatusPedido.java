@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Enum.java to edit this template
  */
 
-package io.github.thymeleaf_sandbox.model;
+package io.github.thymeleaf_sandbox.model.enums;
 
 /**
  *

@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import org.hibernate.annotations.ColumnDefault;
 
 import io.github.thymeleaf_sandbox.authentication.AppUser;
+import io.github.thymeleaf_sandbox.model.enums.StatusPedido;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;

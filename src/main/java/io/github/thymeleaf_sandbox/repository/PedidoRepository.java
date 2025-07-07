@@ -12,7 +12,7 @@ import org.springframework.data.repository.query.Param;
 
 import io.github.thymeleaf_sandbox.authentication.AppUser;
 import io.github.thymeleaf_sandbox.model.Pedido;
-import io.github.thymeleaf_sandbox.model.StatusPedido;
+import io.github.thymeleaf_sandbox.model.enums.StatusPedido;
 
 /**
  *
@@ -20,9 +20,9 @@ import io.github.thymeleaf_sandbox.model.StatusPedido;
  */
 public interface PedidoRepository extends JpaRepository< Pedido, Long> {
 
-    Page<Pedido> findByStatusPedido(StatusPedido status,Pageable pageable);
+    Page<Pedido> findByStatusPedido(StatusPedido status, Pageable pageable);
 
-    Page<Pedido> findAllByUser(AppUser user,Pageable pageable);
+    Page<Pedido> findAllByUser(AppUser user, Pageable pageable);
 
     @Query("SELECT p FROM Pedido p join p.user u where u.username =:username")
     Page<Pedido> findAllByUser(@Param("username") String username, Pageable pageable);
@@ -30,8 +30,5 @@ public interface PedidoRepository extends JpaRepository< Pedido, Long> {
     @Query("""
             select p from Pedido p join p.user u where p.statusPedido =:status and u.username=:username
             """)
-    Page<Pedido> findAllByStatusPedidoUser(
-        @Param("username") String username, 
-    @Param("status") StatusPedido status,
-    Pageable pageable);
+    Page<Pedido> findAllByStatusPedidoUser(@Param("username") String username, @Param("status") StatusPedido status, Pageable pageable);
 }

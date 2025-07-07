@@ -1,3 +1,4 @@
+<!--Colocar aviso dos erros no fomulário de login-->
 <div class="container mt-4 border border-black rounded p-3"   th:fragment="login">
     <p th:text="${currentUrl}"></p>
     <form th:action="@{/login}" method="post">
@@ -12,6 +13,10 @@
         <div class="d-flex flex-column flex-md-row gap-3 mb-3 ">
             <button type="submit" class="btn btn-primary flex-fill">Logar</button>
             <button type="reset" class="btn btn-warning flex-fill" >limpar</button>
+        </div>
+        <div class="d-flex flex-column flex-md-row gap-4 mb-3">
+        
+            <a type="button" class="btn btn-success flex-fill" th:href="@{/cadastro}">Cadastrar</a>
         </div>
     </form>
 </div>
